@@ -1,6 +1,6 @@
 ---
 description: Generate changelogs and audit documentation against code for inconsistencies
-argument-hint: [--since TAG|COMMIT] [--audit] [--full] [--fix] [--format md|json] [--out <dir>] [--scope <path>]
+argument-hint: [--since TAG|COMMIT] [--audit] [--full] [--fix] [--format md|json] [--out <dir>] [--scope <path>] [--audience dev|user|both] [--group-by type|scope|component]
 aliases: [doccheck, doc-check]
 ---
 

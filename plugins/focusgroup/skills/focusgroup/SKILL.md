@@ -32,7 +32,7 @@ Multi-persona review system that dynamically generates diverse reviewer personal
 | `--format md\|json` | Output format | md |
 | `--personas <file>` | Custom persona definitions file | (auto-generated) |
 | `--out <dir>` | Output directory | .focusgroup/{timestamp} |
-| `--deep` | Use full 8-phase review protocol per reviewer (on top of default deep research) | (standard) |
+| `--deep` | Use full multi-phase review protocol per reviewer (8 phases for websites, 9 for codebases, 6 for ideas) | (standard) |
 | `--shallow` | Skip deep site crawl, use homepage-only (NOT recommended for websites) | (deep) |
 | `--delphi` | 3-round iterative Delphi method | (none) |
 | `--debate` | Red Team vs Blue Team structured debate | (none) |

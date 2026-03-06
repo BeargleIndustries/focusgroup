@@ -8,7 +8,7 @@ Thanks for your interest in contributing!
 2. Clone your fork locally
 3. Install as a local Claude Code plugin:
    ```bash
-   claude plugin install /path/to/your/fork/plugins/focusgroup --scope local
+   claude plugin install /path/to/your/fork/plugins/focusgroup
    ```
 4. Make your changes
 5. Test by running `/focusgroup` in Claude Code
@@ -129,7 +129,7 @@ Open an issue with:
 - **Command is sole orchestrator:** `commands/focusgroup.md` spawns all agents. No agent spawns sub-agents.
 - **Runtime document loading:** Protocols and methodologies are loaded at runtime via Read tool. They are NOT inlined into the command.
 - **Command line budget:** `commands/focusgroup.md` must stay under 550 lines.
-- **Agent model tiers:** haiku (probes, simple generators), sonnet (reviewers, complex generators), opus (director only).
+- **Agent model tiers:** haiku (lightweight probes, simple generators), sonnet (reviewers, validators, deep research probes, complex generators), opus (director only).
 
 ## Guidelines
 

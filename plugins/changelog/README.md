@@ -19,7 +19,7 @@ Restart Claude Code after installing.
 - `/changelog --audit` — doc audit only
 - `/changelog --since v1.0.0` — changelog since a specific tag
 - `/changelog --fix` — auto-fix unambiguous doc issues
-- `/doccheck` — alias for `/changelog --audit`
+- `/doccheck` (or `/doc-check`) — alias for `/changelog --audit`
 
 ## What It Catches
 
@@ -48,7 +48,7 @@ Results go to `.changelog/{timestamp}/` with:
 |------|-------------|
 | `--since TAG` | Changelog starting point |
 | `--audit` | Doc audit only |
-| `--full` | Comprehensive audit + changelog |
+| `--full` | Comprehensive deep audit + changelog (more thorough than default) |
 | `--fix` | Auto-fix unambiguous issues |
 | `--format md\|json` | Output format |
 | `--out <dir>` | Custom output directory |

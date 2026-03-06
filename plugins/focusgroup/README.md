@@ -4,9 +4,16 @@ A Claude Code plugin that runs AI-powered focus group reviews with deep review p
 
 Point it at a website, codebase, product idea, or anything else — and get back detailed reviews from diverse perspectives, plus synthesis with confidence-scored findings, action plans, SWOT analysis, and more.
 
+## What's New in v1.1
+
+- **Deep Website Research by Default** — All website targets now get a full site crawl (up to 25 pages + linked properties) before reviews begin, replacing homepage-only scraping. Use `--shallow` to opt out.
+- **`--shallow` Flag** — Skip the deep site crawl for faster but less informed reviews
+- **`--parallel` Flag** — Explicitly request parallel review execution (was always the default, now a named flag)
+- **Marketplace Distribution** — Install via `claude plugin marketplace add` instead of manual git clone
+
 ## What's New in v1.0
 
-- **Deep Review Protocols** — 8-phase website exploration, 9-phase codebase analysis, 6-phase idea research with evidence-tier scoring
+- **Deep Review Protocols** — Multi-phase review protocols per target type: 8-phase website exploration, 9-phase codebase analysis, 6-phase idea research with evidence-tier scoring
 - **Methodology Modes** — Delphi (iterative consensus), Debate (red/blue team), Cognitive Walkthrough (friction mapping), Comparative (competitive analysis)
 - **Quality Control** — Automated specificity checking, evidence validation, rating consistency, hallucination guard
 - **Rich Outputs** — Action plans (markdown/CSV/GitHub/Linear), SWOT matrices, effort-impact matrices, self-contained HTML reports with SVG charts
@@ -46,6 +53,8 @@ Then restart Claude Code. The `/focusgroup` command will be available immediatel
 | `--count N` | Number of personas (3-15) | 10 |
 | `--panel <type>` | Preset panel focus | auto |
 | `--sequential` | Run reviews one at a time | parallel |
+| `--parallel` | Run reviews in batches of 5 | (default) |
+| `--shallow` | Skip deep site crawl (not recommended for websites) | deep |
 | `--format md\|json` | Output format | md |
 | `--personas <file>` | Custom persona definitions (YAML) | auto-generated |
 | `--out <dir>` | Output directory | `.focusgroup/{timestamp}` |
@@ -73,7 +82,7 @@ Methodology flags are mutually exclusive.
 
 | Option | Description |
 |--------|-------------|
-| `--action-plan` | Generate prioritized action plan/backlog |
+| `--action-plan` (or `--backlog`) | Generate prioritized action plan/backlog |
 | `--backlog-format <fmt>` | Format: `markdown\|csv\|github\|linear` |
 | `--swot` | Generate SWOT analysis matrix |
 | `--risk-matrix` | Generate effort/impact matrix |
@@ -84,11 +93,17 @@ Methodology flags are mutually exclusive.
 
 `/fg` and `/focus-group` also work.
 
+## Default Behavior
+
+For **website targets**, the plugin automatically runs a deep site crawl before generating personas or launching reviewers. This crawls up to 25 internal pages plus linked properties (products, apps, research) to build a comprehensive site dossier. Reviewers use this dossier as their primary evidence source instead of relying on homepage-only impressions.
+
+Use `--shallow` to skip the deep crawl and use only a lightweight homepage probe (not recommended — reviews will be significantly less informed).
+
 ## Target Types
 
 The plugin auto-detects what you're reviewing:
 
-- **Website** — URLs starting with `http://` or `https://`. Personas use browser tools to navigate, screenshot, and inspect the live site. With `--deep`, follows an 8-phase protocol covering discovery, navigation, interactive elements, performance, accessibility, SEO, mobile, and security.
+- **Website** — URLs starting with `http://` or `https://`. Deep site crawl runs by default. Personas use browser tools to navigate, screenshot, and inspect the live site. With `--deep`, follows a multi-phase review protocol (8 phases covering discovery, navigation, interactive elements, performance, accessibility, SEO, mobile, and security).
 - **Codebase** — Local file paths. Personas use file reading, search, LSP diagnostics, and AST pattern matching. With `--deep`, follows a 9-phase protocol covering structure, build health, static analysis, security, coverage, dead code, patterns, architecture, and CI/CD.
 - **Product** — A URL paired with local code. Personas get both browser and code tools.
 - **Idea** — Plain text descriptions. Personas use web search for market research. With `--deep`, follows a 6-phase protocol covering market sizing (TAM/SAM/SOM), competitor analysis, pain points, feasibility, business model, and regulatory landscape.

@@ -1,6 +1,6 @@
 # Beargle Industries Claude Code Plugins
 
-A collection of Claude Code plugins by [Beargle Industries](https://github.com/BeargleIndustries).
+A growing collection of Claude Code plugins by [Beargle Industries](https://github.com/BeargleIndustries). New plugins are actively in development — add the marketplace once and get access to everything as it ships.
 
 ## Available Plugins
 
@@ -8,6 +8,7 @@ A collection of Claude Code plugins by [Beargle Industries](https://github.com/B
 |--------|-------------|
 | [focusgroup](plugins/focusgroup/) | AI-powered focus group reviews with deep protocols, advanced methodologies, quality control, and rich output formats |
 | [changelog](plugins/changelog/) | Changelog generation with doc-vs-code consistency auditing — catches wrong install instructions, outdated API examples, nonexistent CLI flags, and more |
+| *More coming soon* | |
 
 ## Install
 
