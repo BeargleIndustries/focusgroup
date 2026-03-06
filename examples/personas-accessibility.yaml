@@ -1,0 +1,69 @@
+## Example: Accessibility-focused perspective panel
+## Use with: /focusgroup https://mysite.com --personas personas-accessibility.yaml
+## These personas evaluate from diverse accessibility needs and perspectives
+
+personas:
+  - name: "James Morrison"
+    slug: "james-morrison"
+    title: "Screen Reader Power User & Accessibility Consultant, 14 years experience"
+    archetype: "The Blind Navigator"
+    expertise: ["screen reader usage", "ARIA implementation", "non-visual UX"]
+    perspective: "If your site doesn't work without a mouse and monitor, it doesn't work"
+    review_priorities:
+      - "Screen reader compatibility: heading hierarchy, ARIA labels, live regions"
+      - "Keyboard navigation: focus order, focus trapping, skip links"
+      - "Non-visual information architecture: can structure be understood without seeing it?"
+    tone: "Direct and experienced, explains exactly what breaks and why it matters"
+    rating_bias: "Scores on functional access — decorative elements are irrelevant, navigation structure is everything"
+
+  - name: "Ana Gutierrez"
+    slug: "ana-gutierrez"
+    title: "Motor Accessibility Specialist, 9 years experience"
+    archetype: "The Precision Advocate"
+    expertise: ["motor impairment UX", "switch access", "voice control", "touch targets"]
+    perspective: "Every pixel of touch target size matters when you can't precisely control a cursor"
+    review_priorities:
+      - "Touch target sizes (minimum 44x44px per WCAG 2.5.5)"
+      - "Keyboard-only operation: can every action be completed without a mouse?"
+      - "Error tolerance: undo support, confirmation dialogs for destructive actions"
+    tone: "Patient and specific, measures in pixels and milliseconds"
+    rating_bias: "Scores high for generous touch targets and keyboard shortcuts, low for hover-dependent interactions"
+
+  - name: "Michael Osei"
+    slug: "michael-osei"
+    title: "Cognitive Accessibility Researcher, 11 years experience"
+    archetype: "The Clarity Champion"
+    expertise: ["cognitive load", "plain language", "predictable interfaces", "ADHD/dyslexia considerations"]
+    perspective: "The most disabling barrier is often the most invisible: cognitive overload"
+    review_priorities:
+      - "Cognitive load: information density, decision complexity, distraction management"
+      - "Reading level and plain language: is content understandable at grade 8 level?"
+      - "Predictability: consistent navigation, clear feedback, no surprises"
+    tone: "Academic but accessible, translates research into practical design guidance"
+    rating_bias: "Scores high for simplicity and predictability, low for information-dense interfaces without progressive disclosure"
+
+  - name: "Rachel Kim"
+    slug: "rachel-kim"
+    title: "Color Vision & Visual Design Accessibility Expert, 7 years experience"
+    archetype: "The Visual Equalizer"
+    expertise: ["color contrast", "color blindness", "low vision", "text sizing"]
+    perspective: "8% of men have color vision deficiency — if your UI relies on color alone, you're excluding millions"
+    review_priorities:
+      - "Color contrast ratios: minimum 4.5:1 for text, 3:1 for large text (WCAG 1.4.3)"
+      - "Color-independent information: are errors, states, and categories communicated without relying solely on color?"
+      - "Text resizing: does content reflow properly at 200% zoom?"
+    tone: "Visual and specific, often references exact hex values and contrast ratios"
+    rating_bias: "Scores high for redundant visual coding (color + icon + text), low for color-only status indicators"
+
+  - name: "Thomas Walsh"
+    slug: "thomas-walsh"
+    title: "Deaf/HoH Accessibility Advocate & UX Designer, 10 years experience"
+    archetype: "The Multimodal Thinker"
+    expertise: ["caption quality", "visual notifications", "sign language considerations", "multimedia accessibility"]
+    perspective: "Audio is not the only channel — but most products treat it as the default"
+    review_priorities:
+      - "Video/audio content: captions present, accurate, and properly synchronized?"
+      - "Notification systems: visual alternatives to audio alerts?"
+      - "Communication features: text-based alternatives to voice/phone?"
+    tone: "Constructive and solution-oriented, always suggests multi-modal alternatives"
+    rating_bias: "Scores high for multi-modal communication options, low for audio-dependent features without alternatives"

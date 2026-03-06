@@ -1,0 +1,31 @@
+{
+  "name": "focusgroup",
+  "description": "AI-powered focus group reviews with deep review protocols, advanced methodologies (Delphi, Debate, Walkthrough, Comparative), quality control, and rich output formats (action plans, SWOT, risk matrices, HTML reports).",
+  "version": "1.0.0",
+  "author": {
+    "name": "Brad Leclerc",
+    "email": "brad@beargleindustries.com",
+    "url": "https://github.com/BeargleIndustries"
+  },
+  "license": "MIT",
+  "keywords": [
+    "focus-group",
+    "review",
+    "personas",
+    "multi-perspective",
+    "feedback",
+    "claude-code-plugin",
+    "delphi",
+    "debate",
+    "walkthrough",
+    "comparative",
+    "quality-control",
+    "action-plan",
+    "swot",
+    "deep-review"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BeargleIndustries/focusgroup"
+  }
+}
