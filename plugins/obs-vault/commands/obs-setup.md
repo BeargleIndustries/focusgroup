@@ -55,7 +55,7 @@ Create these directories (use `mkdir -p` or equivalent):
 - `{vault_path}/attachments/`
 - `{vault_path}/.obsidian/`
 
-Write these files **only if they don't already exist**:
+Write these files **only if they don't already exist**. Write template files with placeholder tokens (`{{date}}`, `{Project Name}`, `{short-name}`, etc.) as **literal text** — these are Obsidian templates for future use, not values to interpolate now:
 
 **`{vault_path}/Home.md`:**
 ```markdown
@@ -343,7 +343,7 @@ Check if `{vault_path}/projects/{name}/{name}.md` already exists.
 
 ### Phase 5: Generate CLAUDE.md Snippet
 
-Output the following block with `{vault_path}` replaced by the actual resolved path:
+Output the following block with `{vault_path}` replaced by the actual resolved path. **Leave all other placeholders (`{name}`, `{tech}`, `{short-name}`) as-is** — they are generic references in the instructions, not values to substitute:
 
 ```markdown
 ## Obsidian Knowledge Vault
@@ -487,7 +487,7 @@ Next steps:
 
 | Error | Action |
 |-------|--------|
-| Cannot resolve `~` | Use `/tmp/AgentMemory` as fallback, warn user |
+| Cannot resolve `~` | Use `$HOME/Documents/AgentMemory` as fallback (or `$TEMP/AgentMemory` on Windows), warn user |
 | Directory creation fails (permissions) | Report the specific path and error, stop |
 | Git not installed | Fall back to `basename $(pwd)` for project name, note in summary |
 | `git remote get-url origin` fails | Leave `repo:` blank in project template |

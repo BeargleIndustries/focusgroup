@@ -615,8 +615,9 @@ View and update the Active TODOs for the current project.
 
 3. **If arguments provided**: Parse as a TODO action:
    - Plain text → Add as a new pending item under `$PROJECT`
-   - `done: <text>` → Move matching item to Completed
-   - `remove: <text>` → Remove matching item
+   - `add <text>` or `add: <text>` → Same as plain text (add as pending item)
+   - `done <text>` or `done: <text>` → Move matching item to Completed
+   - `remove <text>` or `remove: <text>` → Remove matching item
 
 4. **Write back** the updated file.
 
