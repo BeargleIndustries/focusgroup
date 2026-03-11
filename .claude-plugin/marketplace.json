@@ -54,6 +54,26 @@
         "doc-drift",
         "release-notes"
       ]
+    },
+    {
+      "name": "obs-vault",
+      "source": "./plugins/obs-vault",
+      "description": "Persistent Obsidian-based memory for Claude Code. Knowledge vault that persists across sessions — project context, architecture decisions, component notes, patterns, and TODOs.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Brad Leclerc",
+        "url": "https://github.com/BeargleIndustries"
+      },
+      "category": "Memory",
+      "homepage": "https://github.com/BeargleIndustries/beargle-plugins/tree/main/plugins/obs-vault",
+      "keywords": [
+        "obsidian",
+        "memory",
+        "vault",
+        "knowledge-graph",
+        "session-memory",
+        "persistent-context"
+      ]
     }
   ]
 }
