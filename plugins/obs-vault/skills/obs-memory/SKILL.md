@@ -323,13 +323,16 @@ Analyze the current codebase and populate the vault with interconnected, content
 
 **Usage**: `analyze` (no arguments — uses current repo)
 
-This command delegates deep analysis to a sub-agent:
+This command delegates deep analysis to a sub-agent. Spawn it with:
 
 ```
-Agent(subagent_type="obs-vault:vault-analyst")
+Agent(
+  subagent_type="obs-vault:vault-analyst",
+  prompt="Analyze this project and populate the vault.\n\nVAULT_PATH: {resolved $VAULT path}\nPROJECT_PATH: {repo root or working directory}\nPROJECT_NAME: {detected project name}\nREPO_URL: {git remote URL or empty}\nTODAY: {YYYY-MM-DD}"
+)
 ```
 
-The vault-analyst sub-agent handles all four phases below. Pass it the resolved `$VAULT` path and the detected project name.
+The vault-analyst sub-agent handles all four phases below.
 
 #### Phase 1: Discovery — Scan for Knowledge Sources
 
