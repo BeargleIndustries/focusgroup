@@ -341,9 +341,22 @@ Check if `{vault_path}/projects/{name}/{name}.md` already exists.
 
 ---
 
-### Phase 5: Generate CLAUDE.md Snippet
+### Phase 5: Install CLAUDE.md Instructions
 
-Output the following block with `{vault_path}` replaced by the actual resolved path. **Leave all other placeholders (`{name}`, `{tech}`, `{short-name}`) as-is** — they are generic references in the instructions, not values to substitute:
+Prepare the snippet below with `{vault_path}` replaced by the actual resolved path. **Leave all other placeholders (`{name}`, `{tech}`, `{short-name}`) as-is** — they are generic references in the instructions, not values to substitute.
+
+#### Step 5a: Check existing global CLAUDE.md
+
+Read `~/.claude/CLAUDE.md` (resolve `~` to the user's home directory).
+
+- If the file **does not exist**: Create it with just the snippet below. Tell the user: `[OBS-SETUP] Created ~/.claude/CLAUDE.md with vault instructions.`
+- If the file **exists**: Check if it already contains an "Obsidian Knowledge Vault" section (search for the heading `## Obsidian Knowledge Vault`).
+  - If **section already exists**: Tell the user: `[OBS-SETUP] Your CLAUDE.md already has an Obsidian vault section. Showing the updated snippet below — replace your existing section with it if you want the latest version.` Then output the snippet as a code block for manual copy/paste.
+  - If **no existing section**: Check the file for anything that might conflict (other vault paths, competing session-start instructions, etc.). Then ask the user: `"Your ~/.claude/CLAUDE.md doesn't have vault instructions yet. Want me to append them directly?"`
+    - If **yes**: Append the snippet to the end of the file (with a blank line separator). Announce: `[OBS-SETUP] Appended vault instructions to ~/.claude/CLAUDE.md.`
+    - If **no**: Output the snippet as a code block for manual copy/paste.
+
+#### Step 5b: The Snippet
 
 ```markdown
 ## Obsidian Knowledge Vault
@@ -458,7 +471,7 @@ When the user types `/obs <command>`, invoke the obs-vault plugin's obs-memory s
 
 Tell the user:
 
-1. **Add to CLAUDE.md:** "Copy the snippet above into your `~/.claude/CLAUDE.md`. If you already have an Obsidian vault section, replace it — don't duplicate."
+1. **CLAUDE.md:** If the snippet was auto-appended, confirm it's done. If it was shown for manual copy, remind them to paste it into `~/.claude/CLAUDE.md`.
 2. **Open in Obsidian (optional):** "Vault Switcher → Open folder as vault → `{vault_path}`"
 3. **Populate the vault:** "Run `/obs analyze` in any project to populate it with project knowledge."
 
@@ -473,12 +486,11 @@ Report what was done:
 
 Vault: {vault_path} ({created/already existed})
 Project: {name} ({scaffolded/already scaffolded/not scaffolded})
-CLAUDE.md snippet: generated above
+CLAUDE.md: {appended automatically/shown for manual copy/already had vault section}
 
 Next steps:
-1. Add the snippet to ~/.claude/CLAUDE.md
-2. Run `/obs analyze` to populate vault with project knowledge
-3. (Optional) Open {vault_path} in Obsidian as a vault
+1. Run `/obs analyze` to populate vault with project knowledge
+2. (Optional) Open {vault_path} in Obsidian as a vault
 ```
 
 ---
